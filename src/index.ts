@@ -151,7 +151,7 @@ class QuickChartServer {
       tools: [
         {
           name: 'generate_chart',
-          description: 'Generate a chart using QuickChart',
+          description: 'QuickChart.io 에서 차트를 생성합니다. options는 chartjs와 완벽히 동일하므로 참고하세요.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -191,8 +191,10 @@ class QuickChartServer {
               title: { type: 'string' },
               options: { type: 'object' }
             },
-            required: ['type', 'datasets']
-          }
+            required: ['type', 'datasets'],
+            additionalProperties: false
+          },
+          strict: true
         },
         {
           name: 'download_chart',
@@ -209,8 +211,10 @@ class QuickChartServer {
                 description: 'Path where the chart image should be saved'
               }
             },
-            required: ['config', 'outputPath']
-          }
+            required: ['config', 'outputPath'],
+            additionalProperties: false
+          },
+          strict: true
         }
       ]
     }));

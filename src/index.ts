@@ -223,6 +223,10 @@ class QuickChartServer {
       switch (request.params.name) {
         case 'generate_chart': {
           try {
+            throw new McpError(
+              ErrorCode.InvalidParams,
+              'parameters' + JSON.stringify(request.params.arguments)
+            );
             const config = this.generateChartConfig(request.params.arguments);
             const url = await this.generateChartUrl(config);
             return {
